@@ -1,0 +1,11 @@
+{
+  "fact_summary": "What was learned",
+  "source_type": "chat|tool|doc",
+  "source_refs": [
+    "optional URL or doc id"
+  ],
+  "evidence": [
+    "short evidence statement"
+  ],
+  "confidence_rationale": "why this confidence was assigned"
+}

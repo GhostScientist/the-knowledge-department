@@ -1,0 +1,69 @@
+{
+  "name": "assertions",
+  "type": "base",
+  "description": "Logical assertion identity with latest revision pointer.",
+  "fields": [
+    {
+      "name": "assertion_id",
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "knowledge_key",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "scope",
+      "type": "select",
+      "required": true,
+      "values": ["repo", "org"],
+      "maxSelect": 1
+    },
+    {
+      "name": "org_id",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "project_id",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "repo_id",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "revision_count",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "current_revision",
+      "type": "relation",
+      "required": true,
+      "collection": "assertion_revisions",
+      "maxSelect": 1
+    },
+    {
+      "name": "created_by_event",
+      "type": "relation",
+      "required": false,
+      "collection": "provenance_events",
+      "maxSelect": 1
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_assertions_assertion_id ON assertions (assertion_id)",
+    "CREATE INDEX idx_assertions_key_scope_project ON assertions (knowledge_key, scope, project_id)",
+    "CREATE INDEX idx_assertions_key_scope_org ON assertions (knowledge_key, scope, org_id)"
+  ]
+}

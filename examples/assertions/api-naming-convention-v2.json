@@ -1,0 +1,17 @@
+{
+  "domain": "Engineering",
+  "namespace": "API Standards",
+  "title": "JSON Naming Convention",
+  "proposed_assertion": "All API responses should use camelCase for JSON keys, except when mirroring third-party payloads that are contractually fixed.",
+  "tags": [
+    "cross-team-policy",
+    "naming",
+    "json",
+    "revision-2"
+  ],
+  "source": {
+    "type": "custodian_reconciliation",
+    "actor": "validator"
+  },
+  "notes": "Revision clarifies legacy integration exception after conflict review across three services."
+}

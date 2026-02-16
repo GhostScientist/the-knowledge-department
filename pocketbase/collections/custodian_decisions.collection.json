@@ -1,0 +1,66 @@
+{
+  "name": "custodian_decisions",
+  "type": "base",
+  "description": "Decisions made by archivist/validator/reconciler/scout roles.",
+  "fields": [
+    {
+      "name": "decision_id",
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "assertion",
+      "type": "relation",
+      "required": true,
+      "collection": "assertions",
+      "maxSelect": 1
+    },
+    {
+      "name": "revision",
+      "type": "relation",
+      "required": true,
+      "collection": "assertion_revisions",
+      "maxSelect": 1
+    },
+    {
+      "name": "custodian_role",
+      "type": "select",
+      "required": true,
+      "values": ["archivist", "validator", "reconciler", "scout"],
+      "maxSelect": 1
+    },
+    {
+      "name": "decision",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "confidence",
+      "type": "number",
+      "required": false
+    },
+    {
+      "name": "rubric_version",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "decision_notes",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "source_event",
+      "type": "relation",
+      "required": true,
+      "collection": "provenance_events",
+      "maxSelect": 1
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_custodian_decisions_decision_id ON custodian_decisions (decision_id)",
+    "CREATE INDEX idx_custodian_decisions_assertion_role ON custodian_decisions (assertion, custodian_role)",
+    "CREATE INDEX idx_custodian_decisions_revision ON custodian_decisions (revision)"
+  ]
+}

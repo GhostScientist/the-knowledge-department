@@ -1,0 +1,70 @@
+{
+  "name": "provenance_events",
+  "type": "base",
+  "description": "Append-only normalized event envelopes from knowledge CLI hooks.",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "event_type",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "occurred_at",
+      "type": "date",
+      "required": true
+    },
+    {
+      "name": "org_id",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "workspace_id",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "project_id",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "scope",
+      "type": "select",
+      "required": true,
+      "values": ["repo", "org"],
+      "maxSelect": 1
+    },
+    {
+      "name": "agent",
+      "type": "json",
+      "required": true
+    },
+    {
+      "name": "workspace",
+      "type": "json",
+      "required": true
+    },
+    {
+      "name": "provenance",
+      "type": "json",
+      "required": true
+    },
+    {
+      "name": "payload",
+      "type": "json",
+      "required": true
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_provenance_events_event_id ON provenance_events (event_id)",
+    "CREATE INDEX idx_provenance_events_type_time ON provenance_events (event_type, occurred_at)",
+    "CREATE INDEX idx_provenance_events_scope_project ON provenance_events (scope, project_id, occurred_at)"
+  ]
+}

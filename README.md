@@ -66,13 +66,18 @@ Planned phases:
 To bootstrap provenance-first agent integration, this repo includes an MVP connection scaffold:
 
 - `scripts/install-tkd-agent.sh` installs a local `knowledge` command.
-- `scripts/knowledge.sh` provides `knowledge event` and `knowledge assert`.
+- `scripts/knowledge.sh` provides `knowledge enable/status`, `knowledge event`, `knowledge assert`, `knowledge promote`, and `knowledge lookup`.
 - `scripts/mock_tkd_server.py` and `scripts/smoke-test.sh` provide local end-to-end testing.
 
 Example:
-`~/.tkd/bin/knowledge assert --assertion-file examples/assertions/api-naming-convention.json --confidence 0.6 --dry-run`
+`~/.tkd/bin/knowledge assert --assertion-file examples/assertions/api-naming-convention.json --knowledge-key engineering.api.json_naming --scope repo --confidence 0.6 --dry-run`
+
+Hook alignment:
+`knowledge enable` installs managed Git hook wrappers (`post-commit`, `pre-push`) and configures Claude project hooks in `.claude/settings.local.json`.
 
 See `docs/mvp-agent-harness.md` for architecture and commands.
+See `docs/pocketbase-knowledge-model.md` for the storage/query/evolution model.
+See `docs/TESTING-WHAT-WE-HAVE.md` for validation steps and testing notes templates.
 
 ## Built By
 

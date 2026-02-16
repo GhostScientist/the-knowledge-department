@@ -11,6 +11,9 @@ AGENT_ID="${USER:-local}-agent"
 RUNTIME="generic"
 ORG_ID="local-dev"
 WORKSPACE_ID="$(basename "$(pwd)")"
+PROJECT_ID="${WORKSPACE_ID}"
+PROJECT_ID_EXPLICIT="0"
+DEFAULT_SCOPE="repo"
 FORCE="0"
 
 usage() {
@@ -28,6 +31,8 @@ Options:
   --runtime NAME        Agent runtime (codex, claude, cursor, etc.)
   --org-id ID           Organization identifier
   --workspace-id ID     Workspace identifier
+  --project-id ID       Project identifier (defaults to workspace id)
+  --default-scope SCOPE Default knowledge scope (repo|org)
   --force               Overwrite existing config if present
   --help                Print this help message
 EOF
@@ -71,6 +76,18 @@ while [[ $# -gt 0 ]]; do
       ;;
     --workspace-id)
       WORKSPACE_ID="$2"
+      if [[ "$PROJECT_ID_EXPLICIT" != "1" ]]; then
+        PROJECT_ID="$WORKSPACE_ID"
+      fi
+      shift 2
+      ;;
+    --project-id)
+      PROJECT_ID="$2"
+      PROJECT_ID_EXPLICIT="1"
+      shift 2
+      ;;
+    --default-scope)
+      DEFAULT_SCOPE="$2"
       shift 2
       ;;
     --force)
@@ -111,6 +128,8 @@ else
     --tkd-base-url "$TKD_BASE_URL"
     --org-id "$ORG_ID"
     --workspace-id "$WORKSPACE_ID"
+    --project-id "$PROJECT_ID"
+    --default-scope "$DEFAULT_SCOPE"
   )
   if [[ "$FORCE" == "1" ]]; then
     init_args+=(--force)

@@ -1,0 +1,51 @@
+{
+  "name": "influence_edges",
+  "type": "base",
+  "description": "Links describing why a revision exists and what influenced it.",
+  "fields": [
+    {
+      "name": "edge_id",
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "from_revision",
+      "type": "relation",
+      "required": true,
+      "collection": "assertion_revisions",
+      "maxSelect": 1
+    },
+    {
+      "name": "edge_type",
+      "type": "select",
+      "required": true,
+      "values": ["supports", "contradicts", "supersedes", "derived_from", "cites"],
+      "maxSelect": 1
+    },
+    {
+      "name": "target_revision",
+      "type": "relation",
+      "required": false,
+      "collection": "assertion_revisions",
+      "maxSelect": 1
+    },
+    {
+      "name": "target_ref",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "source_event",
+      "type": "relation",
+      "required": true,
+      "collection": "provenance_events",
+      "maxSelect": 1
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_influence_edges_edge_id ON influence_edges (edge_id)",
+    "CREATE INDEX idx_influence_edges_from_type ON influence_edges (from_revision, edge_type)",
+    "CREATE INDEX idx_influence_edges_target_ref ON influence_edges (target_ref)"
+  ]
+}

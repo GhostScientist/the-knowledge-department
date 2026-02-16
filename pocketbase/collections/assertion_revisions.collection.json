@@ -1,0 +1,81 @@
+{
+  "name": "assertion_revisions",
+  "type": "base",
+  "description": "Immutable revisions for each logical assertion.",
+  "fields": [
+    {
+      "name": "revision_id",
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    {
+      "name": "assertion",
+      "type": "relation",
+      "required": true,
+      "collection": "assertions",
+      "maxSelect": 1
+    },
+    {
+      "name": "revision_number",
+      "type": "number",
+      "required": true
+    },
+    {
+      "name": "parent_revision",
+      "type": "relation",
+      "required": false,
+      "collection": "assertion_revisions",
+      "maxSelect": 1
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "knowledge_key",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "scope",
+      "type": "select",
+      "required": true,
+      "values": ["repo", "org"],
+      "maxSelect": 1
+    },
+    {
+      "name": "project_id",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "repo_id",
+      "type": "text",
+      "required": false
+    },
+    {
+      "name": "event",
+      "type": "relation",
+      "required": true,
+      "collection": "provenance_events",
+      "maxSelect": 1
+    },
+    {
+      "name": "content",
+      "type": "json",
+      "required": true
+    },
+    {
+      "name": "influences",
+      "type": "json",
+      "required": false
+    }
+  ],
+  "indexes": [
+    "CREATE UNIQUE INDEX idx_assertion_revisions_revision_id ON assertion_revisions (revision_id)",
+    "CREATE UNIQUE INDEX idx_assertion_revisions_sequence ON assertion_revisions (assertion, revision_number)",
+    "CREATE INDEX idx_assertion_revisions_key_scope_project ON assertion_revisions (knowledge_key, scope, project_id)"
+  ]
+}

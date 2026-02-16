@@ -1,0 +1,29 @@
+{
+  "schema_version": "tkd.repo.enable.v0",
+  "enabled_at": "2026-02-16T06:32:16.927982+00:00",
+  "organization": {
+    "id": "local-dev"
+  },
+  "project": {
+    "id": "the-knowledge-department"
+  },
+  "repo": {
+    "id": "repo_7b78e4f1a6f1"
+  },
+  "installer": {
+    "agent_id": "dakotakim-agent",
+    "runtime": "generic",
+    "config_path": "/Users/dakotakim/.tkd/config.json"
+  },
+  "agents": [
+    "claude",
+    "codex",
+    "cursor",
+    "gemini"
+  ],
+  "hooks": {
+    "mode": "repo_hooks",
+    "learned_event_type": "agent.learned",
+    "default_scope": "repo"
+  }
+}
