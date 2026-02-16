@@ -353,6 +353,35 @@ Validate schema blueprint matches intended workflows.
 
 ---
 
+## Test 12: Phase-2 Scaffold Sanity
+
+### Goal
+
+Verify new product/research/agent scaffold paths exist and are discoverable.
+
+### Files To Review
+
+- `services/tkd-api/README.md`
+- `services/tkd-api/api/openapi.yaml`
+- `agents/custodians/README.md`
+- `research/watership/README.md`
+- `research/watership/scenarios/engineering-api-naming-conflict.json`
+- `research/evals/README.md`
+- `docs/REPO-STRUCTURE.md`
+
+### Expected
+
+- All scaffold paths exist and align with current roadmap phase.
+- Team can identify where to place new API, custodian, and Watership code without ambiguity.
+
+### Notes
+
+- Status:
+- Observations:
+- Tweaks/Refinements:
+
+---
+
 ## Final Summary Notes
 
 ### Biggest Risks Found

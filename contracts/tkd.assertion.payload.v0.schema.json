@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tkd/contracts/tkd.assertion.payload.v0.schema.json",
+  "title": "TKD Assertion Payload v0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "knowledge_key",
+    "scope",
+    "status",
+    "influences",
+    "content"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "tkd.assertion.payload.v0"
+    },
+    "knowledge_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "repo",
+        "org"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "repo_id": {
+      "type": "string"
+    },
+    "assertion_id": {
+      "type": "string"
+    },
+    "parent_revision_id": {
+      "type": "string"
+    },
+    "influences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "ref"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "content": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

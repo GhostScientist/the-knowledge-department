@@ -398,7 +398,7 @@ if [[ -z "\$commit_sha" ]]; then
   exit 0
 fi
 
-payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-git-commit.XXXXXX.json")"
+payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-git-commit.XXXXXX")"
 trap 'rm -f "\$payload_file"' EXIT
 
 python3 - "\$repo_root" "\$commit_sha" "\$payload_file" <<'PY'
@@ -461,7 +461,7 @@ remote_name="\${1:-}"
 remote_url="\${2:-}"
 push_updates="\$(cat || true)"
 
-payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-git-push.XXXXXX.json")"
+payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-git-push.XXXXXX")"
 trap 'rm -f "\$payload_file"' EXIT
 
 python3 - "\$remote_name" "\$remote_url" "\$push_updates" "\$payload_file" <<'PY'
@@ -523,8 +523,8 @@ write_claude_post_tool_hook_script() {
 set -euo pipefail
 
 knowledge_bin="\${KNOWLEDGE_BIN:-\${HOME}/.tkd/bin/knowledge}"
-input_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-claude-hook-in.XXXXXX.json")"
-payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-claude-hook-payload.XXXXXX.json")"
+input_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-claude-hook-in.XXXXXX")"
+payload_file="\$(mktemp "\${TMPDIR:-/tmp}/knowledge-claude-hook-payload.XXXXXX")"
 trap 'rm -f "\$input_file" "\$payload_file"' EXIT
 
 cat >"\$input_file"
@@ -945,7 +945,7 @@ submit_with_provenance() {
   repo_root="$(printf '%s\n' "$context" | sed -n '4p')"
 
   local envelope_file
-  envelope_file="$(mktemp "${TMPDIR:-/tmp}/tkd-envelope.XXXXXX.json")"
+  envelope_file="$(mktemp "${TMPDIR:-/tmp}/tkd-envelope.XXXXXX")"
 
   build_envelope_file \
     "$payload_file" "$event_type" "$confidence" "$agent_id" "$runtime" "$org_id" \
@@ -1622,7 +1622,7 @@ cmd_assert() {
   done
 
   local wrapped_payload
-  wrapped_payload="$(mktemp "${TMPDIR:-/tmp}/tkd-assertion.XXXXXX.json")"
+  wrapped_payload="$(mktemp "${TMPDIR:-/tmp}/tkd-assertion.XXXXXX")"
   write_assertion_payload \
     "$assertion_file" \
     "$wrapped_payload" \
@@ -1733,7 +1733,7 @@ cmd_promote() {
   resolved_repo_id="$(printf '%s\n' "$resolved" | sed -n '3p')"
 
   local promotion_payload
-  promotion_payload="$(mktemp "${TMPDIR:-/tmp}/tkd-promotion.XXXXXX.json")"
+  promotion_payload="$(mktemp "${TMPDIR:-/tmp}/tkd-promotion.XXXXXX")"
   write_promotion_payload \
     "$promotion_payload" \
     "$knowledge_key" \

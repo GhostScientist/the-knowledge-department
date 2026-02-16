@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tkd/contracts/tkd.promotion.payload.v0.schema.json",
+  "title": "TKD Promotion Payload v0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "knowledge_key",
+    "from_scope",
+    "to_scope"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "tkd.promotion.payload.v0"
+    },
+    "knowledge_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "from_scope": {
+      "type": "string",
+      "enum": [
+        "repo",
+        "org"
+      ]
+    },
+    "to_scope": {
+      "type": "string",
+      "enum": [
+        "repo",
+        "org"
+      ]
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "repo_id": {
+      "type": "string"
+    },
+    "assertion_id": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

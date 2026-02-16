@@ -1,0 +1,26 @@
+{
+  "org_id": "watership",
+  "departments": [
+    "Engineering",
+    "Security",
+    "Compliance",
+    "Support",
+    "Operations"
+  ],
+  "policy_facts": [
+    {
+      "knowledge_key": "engineering.api.json_naming",
+      "scope": "org",
+      "effective_from": "2023-07-10T00:00:00Z",
+      "statement": "All API responses must use snake_case keys.",
+      "source": "api-style-guide-v3"
+    },
+    {
+      "knowledge_key": "security.secrets.rotation",
+      "scope": "org",
+      "effective_from": "2025-03-01T00:00:00Z",
+      "statement": "Service credentials must rotate every 90 days.",
+      "source": "security-policy-2025-q1"
+    }
+  ]
+}

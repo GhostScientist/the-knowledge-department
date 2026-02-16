@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: TKD API
+  version: 0.1.0
+  description: Product-layer API contract scaffold for TKD.
+servers:
+  - url: http://127.0.0.1:8787
+paths:
+  /healthz:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: Service health response
+  /v1/agents/events:
+    post:
+      summary: Ingest a provenance-wrapped agent event
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TkdEventEnvelopeV0"
+      responses:
+        "202":
+          description: Accepted
+  /v1/knowledge/assertions:
+    post:
+      summary: Submit a scoped assertion revision
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TkdEventEnvelopeV0"
+      responses:
+        "202":
+          description: Accepted
+  /v1/knowledge/promotions:
+    post:
+      summary: Submit a repo-to-org promotion proposal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TkdEventEnvelopeV0"
+      responses:
+        "202":
+          description: Accepted
+  /v1/knowledge/assertions/current:
+    get:
+      summary: Read current assertion state
+      parameters:
+        - in: query
+          name: knowledge_key
+          schema:
+            type: string
+        - in: query
+          name: scope
+          schema:
+            type: string
+            enum: [repo, org]
+        - in: query
+          name: project_id
+          schema:
+            type: string
+        - in: query
+          name: repo_id
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Current assertion records
+  /v1/knowledge/assertions/{assertion_id}/timeline:
+    get:
+      summary: Read revision history for an assertion
+      parameters:
+        - in: path
+          name: assertion_id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Assertion timeline
+components:
+  schemas:
+    TkdEventEnvelopeV0:
+      type: object
+      description: See contracts/tkd.event.v0.schema.json for source-of-truth details.
+      required:
+        - schema_version
+        - event_id
+        - event_type
+        - occurred_at
+        - agent
+        - organization
+        - workspace
+        - provenance
+        - payload
+      properties:
+        schema_version:
+          type: string
+          const: tkd.event.v0
+        event_id:
+          type: string
+        event_type:
+          type: string
+        occurred_at:
+          type: string
+          format: date-time
+        agent:
+          type: object
+        organization:
+          type: object
+        workspace:
+          type: object
+        provenance:
+          type: object
+        payload:
+          type: object

@@ -1,0 +1,37 @@
+{
+  "scenario_id": "watership.eng.api.naming_conflict.v0",
+  "title": "Engineering API Naming Conflict",
+  "description": "A developer proposes camelCase policy while legacy org guidance still specifies snake_case.",
+  "scope": {
+    "org_id": "watership",
+    "project_id": "engineering-api",
+    "repo_id": "repo_engineering_api"
+  },
+  "timeline": [
+    {
+      "at": "2023-07-10T00:00:00Z",
+      "event": "org_policy_published",
+      "fact": "All API responses must use snake_case keys."
+    },
+    {
+      "at": "2026-01-30T00:00:00Z",
+      "event": "repo_proposal",
+      "fact": "New API surface should use camelCase keys."
+    }
+  ],
+  "inputs": {
+    "proposed_assertion_file": "examples/assertions/api-naming-convention.json",
+    "validator_event_file": "examples/events/validator-check.json"
+  },
+  "ground_truth": {
+    "expected_validator_status": "needs_human_review",
+    "expected_conflict_detected": true,
+    "expected_initial_scope": "repo",
+    "expected_promotion_requires_review": true
+  },
+  "scoring": {
+    "contradiction_detection_weight": 0.4,
+    "confidence_calibration_weight": 0.3,
+    "traceability_completeness_weight": 0.3
+  }
+}
