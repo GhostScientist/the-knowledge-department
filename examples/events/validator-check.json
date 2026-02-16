@@ -1,0 +1,10 @@
+{
+  "custodian": "validator",
+  "assertion_ref": "eng/api/json-naming",
+  "result": "contradiction_detected",
+  "confidence": 0.6,
+  "conflicts_with": [
+    "eng/api/json-naming@2023-07-10"
+  ],
+  "action": "queued_for_human_review"
+}

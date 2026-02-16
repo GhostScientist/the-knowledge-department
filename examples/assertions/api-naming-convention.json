@@ -1,0 +1,16 @@
+{
+  "domain": "Engineering",
+  "namespace": "API Standards",
+  "title": "JSON Naming Convention",
+  "proposed_assertion": "All API responses should use camelCase for JSON keys.",
+  "tags": [
+    "cross-team-policy",
+    "naming",
+    "json"
+  ],
+  "source": {
+    "type": "agent_proposal",
+    "actor": "developer-agent"
+  },
+  "notes": "Submitted for validator review due to possible conflict with 2023 snake_case policy."
+}
