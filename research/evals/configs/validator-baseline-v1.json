@@ -1,0 +1,8 @@
+{
+  "run_id": "run-prompt-baseline-001",
+  "policy_mode": "prompt",
+  "rubric_version": "validator-v1-rlhf",
+  "scenario": "research/watership/scenarios/engineering-api-naming-conflict.json",
+  "decision": "research/watership/fixtures/validator-decision-good.json",
+  "output": "research/evals/runs/run-prompt-baseline-001.json"
+}

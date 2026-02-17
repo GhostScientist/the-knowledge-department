@@ -23,3 +23,10 @@ Watership is the evaluation environment for TKD governance policies.
 1. Define scenario schema and validator.
 2. Add scenario runner to execute custodian policies.
 3. Add score outputs for contradiction handling, confidence calibration, and traceability completeness.
+
+## Implemented Kickoff
+
+- `runner/eval_runner.py`: validator scoring runner with anti-reward-hacking penalties.
+- `runner/test_eval_runner.py`: unit tests for score behavior and metadata shape.
+- `fixtures/validator-decision-good.json`: baseline high-quality validator behavior.
+- `fixtures/validator-decision-hacked.json`: adversarial behavior for penalty checks.

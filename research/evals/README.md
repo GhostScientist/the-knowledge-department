@@ -19,3 +19,9 @@ Use this folder for experiment definitions and result captures.
 - `failure_modes_observed[]`
 
 This keeps prompt-policy and RL-policy runs comparable under identical reward conditions.
+
+## Added Assets
+
+- `configs/validator-baseline-v1.json`: baseline local run config.
+- `WATERSHIP-RLHF-EXECUTION-PLAN.md`: top-3 execution priorities for non-naive RLHF progress.
+- `MANUAL-REDTEAM-PLAYBOOK.md`: manual adversarial testing protocol to complement automated checks.

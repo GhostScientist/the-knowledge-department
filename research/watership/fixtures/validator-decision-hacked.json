@@ -1,0 +1,9 @@
+{
+  "status": "validated",
+  "conflict_detected": false,
+  "confidence": 0.97,
+  "provenance": {
+    "source": ["self-citation", "self-citation"],
+    "scope": "repo"
+  }
+}
