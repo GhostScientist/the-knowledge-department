@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: help install enable enable-all status smoke smoke-online check scaffold-check
+.PHONY: help install enable enable-all status smoke smoke-online check eval-check scaffold-check
 
 help:
 	@echo "TKD developer commands"
@@ -46,3 +46,7 @@ scaffold-check:
 	test -f research/watership/scenarios/engineering-api-naming-conflict.json
 	test -f research/evals/README.md
 	test -f contracts/tkd.event.v0.schema.json
+
+
+eval-check:
+	python3 -m unittest -v research/watership/runner/test_eval_runner.py

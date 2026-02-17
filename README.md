@@ -79,6 +79,9 @@ See `docs/mvp-agent-harness.md` for architecture and commands.
 See `docs/pocketbase-knowledge-model.md` for the storage/query/evolution model.
 See `docs/TESTING-WHAT-WE-HAVE.md` for validation steps and testing notes templates.
 See `docs/REPO-STRUCTURE.md` for project organization and placement rules.
+See `research/evals/WATERSHIP-RLHF-EXECUTION-PLAN.md` for the top-3 Watership RLHF execution priorities.
+See `research/evals/MANUAL-REDTEAM-PLAYBOOK.md` for adversarial manual testing workflows.
+See `research/watership/runner/README.md` for automated Watership scoring runs.
 See `contracts/` for payload contract schemas.
 See `services/tkd-api/`, `agents/custodians/`, and `research/watership/` for phase-2 implementation scaffolds.
 

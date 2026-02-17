@@ -1,0 +1,11 @@
+{
+  "status": "needs_human_review",
+  "conflict_detected": true,
+  "confidence": 0.62,
+  "provenance": {
+    "source": ["org_policy_2023", "repo_proposal_2026"],
+    "scope": "repo",
+    "influence": "supersedes:rev-103",
+    "event_id": "evt-991"
+  }
+}
