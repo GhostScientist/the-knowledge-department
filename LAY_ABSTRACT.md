@@ -19,6 +19,8 @@ Instead of letting AI agents write directly into a company wiki or memory, TKD r
 ## Approach
 - Start with prompt-based policies and clear rubrics so we can see failure modes quickly.
 - Progress to reinforcement learning (bandits → PPO) inside the Watership environment, keeping rewards constant to isolate optimization effects.
+- Feed every experiment with a provenance-first data pipeline (human stories + model traces) so tuned policies stay grounded in real documents.
+- Pair automated metrics with rubric-heavy “reward-hacking probes” to catch confidence inflation, contradiction avoidance, and busywork edits before they reach production.
 - Capture every success and failure as reusable benchmarks, so future teams can reproduce—or avoid—the same behaviors.
 
 ## Why it matters
@@ -30,7 +32,8 @@ As organizations rely on AI collaborators, inaccurate or stale knowledge compoun
 
 ## Near-term focus
 - Finalize the MVP “knowledge” CLI + hook system so agents can assert, validate, and promote facts with automatic logging.
-- Flesh out the Watership benchmark scenarios (policy collisions, compliance edge cases).
-- Run the “Breathing Thought” experiments to produce small, latency-friendly reasoning models that can power Validator/Reconcilers with transparent thinking.
+- Flesh out the Watership benchmark scenarios (policy collisions, compliance edge cases) and turn them into RL environments that mirror Archivist/Validator duties.
+- Stand up the provenance-aware data factory (human prompts + frontier traces + crowd QA) feeding those environments.
+- Run the “Breathing Thought” experiments with the new reward/rubric stack so small, latency-friendly models can power Validator/Reconcilers without gaming the system.
 
 TKD is an invitation to treat organizational knowledge with the same rigor we give to code: versioned, reviewed, and playable with collaborators—human or AI.
