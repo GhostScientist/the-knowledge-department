@@ -43,6 +43,14 @@ Using Watership, we compare:
 
 A central theme is **reward hacking**: how agents game curation metrics while degrading true knowledge quality.
 
+## RL + Evaluation Throughline
+To keep the research and product layers tightly coupled, TKD now centers on a single throughline:
+
+1. **Custodian-scale RL environments** – We build reinforcement-learning tasks that mirror Archivist, Validator, and future Reconciler responsibilities (policy diffing, contradiction surfacing, spreadsheet/budget adjustments). Each environment exposes structured states (documents, knowledge keys, provenance) and constrained actions (assert, cite, flag, amend) so tuned models stay auditable.
+2. **Data creation + provenance pipeline** – Seed datasets mix human-written Watership incidents, prompted expert transcripts, and frontier-model traces. Every artifact carries knowledge keys, confidence targets, and document lineage so it can drop directly into TKD’s `knowledge assert/promote` flows.
+3. **Rubric-heavy evaluation harness** – Automated scoring (LightEval/custom) is paired with rubric checklists for chain-of-thought clarity, citation fidelity, latency, and “reward-hacking probes” (confidence inflation, contradiction avoidance, doc vandalism). Metrics double as rewards inside the RL environments.
+4. **Product checkpoints** – After each experiment loop, tuned policies are exercised through the MVP `knowledge` CLI (validator-assist mode, reconciler suggestions). This keeps the research artifacts immediately useful to the product layer and mirrors the human-in-the-loop governance story.
+
 ## What TKD Aims To Deliver
 
 - The Watership Knowledge Curation Benchmark
